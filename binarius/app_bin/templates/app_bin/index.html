@@ -1,0 +1,37 @@
+<!doctype html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+				<link href="https://fonts.googleapis.com/css?family=Baloo|Source+Code+Pro" rel="stylesheet">
+        <title>binarius</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"
+              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+              crossorigin="anonymous">
+        </script>
+	</head>
+    <body>
+        <div class="header">
+            <div class="logo">
+                <h1>binarius</h1>
+            </div>
+        </div>
+				<div class="navbar">
+						<div class="buttons">
+								<button id="bintodec" type="submit">binary to decimal</button>
+								<button id="dectobin" type="submit">decimal to binary</button>
+						</div>
+				</div>
+
+        <div class="form">
+            <form action="#" method="POST">
+                <p>add binary number<p>
+                <input id="bin-input" type="text" name="input" title="binary number" oninput="loaddata(this.value);">
+            </form>
+            <p id="bin-result"></p>
+        </div>
+    <script type="text/javascript" src="{% static '../../static/js/convert.js' %}"></script>
+    </body>
+</html>
