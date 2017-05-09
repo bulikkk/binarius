@@ -18,19 +18,27 @@
                 <h1>binarius</h1>
             </div>
         </div>
-				<div class="navbar">
-						<div class="buttons">
-								<button id="bintodec" type="submit">binary to decimal</button>
-								<button id="dectobin" type="submit">decimal to binary</button>
-						</div>
-				</div>
+        <div class="navbar">
+            <div class="buttons">
+                <button id="bintodec" type="submit">binary to decimal</button>
+                <button id="dectobin" type="submit">decimal to binary</button>
+            </div>
+        </div>
 
-        <div class="form">
+
+        <div class="form form_bin hidden">
             <form action="#" method="POST">
                 <p>add binary number<p>
                 <input id="bin-input" type="text" name="input" title="binary number" oninput="loaddata(this.value);">
             </form>
-            <p id="bin-result"></p>
+            <p id="bin-result"></br></p>
+        </div>
+        <div class="form form_dec hidden">
+            <form action="#" method="POST">
+                <p>add decimal number<p>
+                <input id="dec-input" type="text" name="input" title="binary number" oninput="loaddata2(this.value);">
+            </form>
+            <p id="dec-result"></br></p>
         </div>
     <script type="text/javascript" src="{% static '../../static/js/convert.js' %}"></script>
     </body>

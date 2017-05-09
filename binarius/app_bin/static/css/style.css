@@ -35,6 +35,11 @@ body {
   background-color: rgba(73,184,167,0.7);
 }
 
+.buttons > button:hover {
+  background-color: rgba(73,184,167,1);
+  box-shadow: 0 0 5px #888888;
+}
+
 .form {
   text-align: center;
 }
@@ -66,4 +71,54 @@ body {
   font-family: 'Source Code Pro', monospace;
   font-size: 1.5em;
   color: #172F38
+}
+
+#dec-input {
+  width: 320px;
+  border: 2px solid #172F38;
+  border-radius: 4px;
+  background-color: transparent;
+  font-size: 1em;
+  font-weight: 200;
+  font-family: 'Source Code Pro', monospace;
+  color: #172F38
+}
+
+#dec-input:focus {
+  border: 2px solid #067778;
+  box-shadow: 0 0 5px #888888;
+}
+
+#dec-result {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.5em;
+  color: #172F38
+}
+
+@media screen and (max-width: 400px) {
+
+  .buttons > button {
+    width: 130px;
+    padding-top: 7px;
+    font-size: 0.8em;
+  }
+
+  #bin-input {
+    width: 280px;
+  }
+
+  #dec-input {
+    width: 280px;
+  }
+
+  #dec-result {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  #bin-result {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
 }
