@@ -28,6 +28,16 @@ ARG APP_NGINX_LOG=$APP_LOG_PATH/nginx
 # Avoid ERROR: invoke-rc.d: policy-rc.d denied execution of start
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+postgresql postgresql-contrib libpq-dev postgresql-client
+
+USER postgres
+
+RUN /etc/init.d/postgresql start &&\
+    psql --command "ALTER USER postgres WITH SUPERUSER PASSWORD 'postgres';"
+
+USER root
+
 ADD requirement_pip.txt $APP_HOME/
 
 # Set the working directory to /app
@@ -50,6 +60,10 @@ RUN ln -s /etc/nginx/sites-available/nginx-app.conf $APP_NGINX_CONFIG/sites-enab
 RUN ln -s $APP_HOME/deploy/runit/nginx.run.sh $APP_RUNIT_PATH/nginx/run
 RUN ln -s $APP_HOME/deploy/runit/uwsgi.run.sh $APP_RUNIT_PATH/uwsgi/run
 RUN ln -s $APP_HOME/deploy/runit/app.init.sh $APP_PRE_SETUP/app.init.sh
+
+# cleanup
+
+RUN apt-get clean && rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/* /root/.cache /etc/dpkg/dpkg.cfg.d/02apt-speedup
 
 EXPOSE $APP_PORT
 

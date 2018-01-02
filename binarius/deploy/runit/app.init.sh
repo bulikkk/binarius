@@ -2,7 +2,10 @@
 
 set -e
 
-loger 'Running app tests...'
-python ${APP_HOME}/manage.py test || exit 1
+sudo service postgresql start
+
+loger 'Running app migrations...'
+
+python ${APP_HOME}/manage.py syncdb --noinput || exit 1
 
 loger 'Starting app...'
